@@ -1,0 +1,31 @@
+symb #read wave_test.prjmat
+grid 302 302
+geom
+	xcrd 0 3.000000e-02 1 302
+	ycrd 0 3.000000e-02 1 302
+site
+	regn watr
+boun
+grph
+	plot matr
+term
+func wvlt 1000000.000000 1.000000
+plod
+	pdef pres1 func
+	vctr vctr1 1 0 0
+	sdef pres1 vctr1 3 3 3 300
+calc
+	pres
+pout
+	hist func
+prcs
+symb #get { tstep } timestep
+symb nexec = 2.005348e-05 / $tstep 
+symb nexec2 = $nexec / 10 
+proc plot save
+exec $nexec2
+grph
+	plot pres
+end$ proc
+proc plot 12
+stop

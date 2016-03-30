@@ -1,0 +1,663 @@
+ ...............................................................................
+ .        Begin    PZFlex  processing at Thu Jan 14 14:31:35 2016              .
+ ...............................................................................
+ .        Release: 2015     Platform: WINEM64T     Precision: single           .
+ .        Code revisions:   PZFLEX_2015_RELEASE_BRANCH_151015                  .
+ ...............................................................................
+ .        Copyright 1984-2015 by Weidlinger Associates.  All rights reserved.  .
+ ...............................................................................
+ .        Windows executable: D:\WAI\Flex\Programs\pzflex64s.exe                                                                                                                                                                                                                                  
+ ...............................................................................
+ .        Username: JH2015       Machine: Flexcid                              .
+ ...............................................................................
+ .        Defaults file: D:\WAI\Flex\Programs\Flex.defaults                    .
+ ...............................................................................
+  
+     Memory allocation:
+     Numeric   data-       100 million  words (       400 Mbyte)
+     Character data-       100 thousand words (         2 Mbyte)
+  
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c --------------------------------------------------------------
+ input- c                   Project Material List
+ input- c --------------------------------------------------------------
+ input- c -------------------------------------------------------------------------
+ input- c Global variables used in all the material definitions
+ input- c -------------------------------------------------------------------------
+ input- c
+          current  definition of epvacm               (  real   ) =  0.8854000E-11
+          current  definition of freqdamp             (  real   ) =  1000000.0    
+          current  definition of rmu0                 (  real   ) =  0.1256600E-05
+ input- c
+ input- c -------------------------------------------------------------------------
+ input- c    Now define the axis transformation - only posx used in this file
+ input- c -------------------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- axis
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      form vctr
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posx car2 0. 0. 0.    1.  0.  0.   0. 1. 0.
+     axis definition: posx                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000      1.0000000       0.000000    
+     ybar direction:        0.000000       0.000000      1.0000000    
+     zbar direction:       1.0000000       0.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negx car2 0. 0. 0.   -1.  0.  0.   0. 1. 0.
+     axis definition: negx                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000      1.0000000       0.000000    
+     ybar direction:        0.000000       0.000000     -1.0000000    
+     zbar direction:      -1.0000000       0.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posy car2 0. 0. 0.    0.  1.  0.   0. 0. 1.
+     axis definition: posy                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       0.000000      1.0000000    
+     ybar direction:       1.0000000       0.000000       0.000000    
+     zbar direction:        0.000000      1.0000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negy car2 0. 0. 0.    0. -1.  0.   0. 0. 1.
+     axis definition: negy                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       0.000000      1.0000000    
+     ybar direction:      -1.0000000       0.000000       0.000000    
+     zbar direction:        0.000000     -1.0000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posz car2 0. 0. 0.    0.  0.  1.   1. 0. 0.
+     axis definition: posz                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:       1.0000000       0.000000       0.000000    
+     ybar direction:        0.000000      1.0000000       0.000000    
+     zbar direction:        0.000000       0.000000      1.0000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negz car2 0. 0. 0.    0.  0. -1.   1. 0. 0.
+     axis definition: negz                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:       1.0000000       0.000000       0.000000    
+     ybar direction:        0.000000     -1.0000000       0.000000    
+     zbar direction:        0.000000       0.000000     -1.0000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c -------------------------------------------------------------------------
+ input- c    Input material properties to program
+ input- c -------------------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- matr
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c --------------------------------------------------------------
+ input- c type : FLUID :
+ input- c name : watr :
+ input- c desc : Water at 25C :
+ input- c --------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    wvsp on
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    type elas
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    prop watr 1000 1496 0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    vdmp watr $freqdamp db 0.002 0 1e+06 2 0.01 0
+     
+      Damping Measures at frequency =    1000000.    
+          Dilatational db/unit length =    2.000E-01
+          Dilatational q              =    9.120E+04
+          Dilatational % critical     =    5.482E-04
+          Shear db/unit length        =    0.000E+00
+          Shear q                     =    0.000E+00
+          Shear % critical            =    0.000E+00
+
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    thrm watr 2060 0.61 0.61 0.61 1.0 0 0 27
+          current  definition of eps                  (  real   ) =   3.000000    
+          current  definition of aeps                 (  real   ) =  0.2656200E-10
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    elec watr $aeps
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    elec void $epvacm
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    end
+
+
+                            vcap material properties
+     --------------------------------------------------------------------------------
+
+
+     parm                 watr
+     ---- --------------------
+   1 rho         1000.0000    
+   2 bulk        0.2238041E+10
+   3 shr          0.000000    
+   4 hrgl        0.1000000E-01
+   7 ldmp         0.000000    
+   8 qdmp         0.000000    
+   9 ltyp       -1.0000000    
+  10  a           0.000000    
+  11  b           0.000000    
+  12  c           0.000000    
+  13  d           0.000000    
+  14  w           0.000000    
+  15  r           0.000000    
+  16 anon        1.0000000    
+  17 geop         0.000000    
+  18 xint         0.000000    
+  19 xntn         0.000000    
+  20 ttyp         0.000000    
+  21 fcut         0.000000    
+  22 elst         0.000000    
+  23 tauv        0.1591515E-06
+  24 taud         0.000000    
+  25 rksf        0.9999781    
+  26 rgsf        1.0000000    
+elec esxx        0.2656200E-10
+elec esyy        0.2656200E-10
+elec eszz        0.2656200E-10
+elec esyz         0.000000    
+elec esxz         0.000000    
+elec esxy         0.000000    
+      cp          1496.008    
+      cs          0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grid 302 302
+
+     grid geometry is 2-dimensional
+     constraint relations are pstn
+
+
+                          i          j          k        total
+                   -----   -----   -----      -----
+     grid nodes   -     302 x      302 x        1 =      91204
+
+     grid elements-     301 x      301 x        1 =      90601
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- geom
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  xcrd 0 3.000000e-02 1 302
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  ycrd 0 3.000000e-02 1 302
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- site
+     *end*     subcommand generated
+
+     the current model consist of:
+          * a standard partition which contains no skewed elements
+
+     x node coordinates - minimum=   0.000000    
+                          maximum=  0.3000000E-01
+
+     x  element spacing - minimum=  0.9966642E-04
+                          maximum=  0.9966828E-04
+
+     y node coordinates - minimum=   0.000000    
+                          maximum=  0.3000000E-01
+
+     y  element spacing - minimum=  0.9966642E-04
+                          maximum=  0.9966828E-04
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  regn watr
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- boun
+     *end*     subcommand generated
+
+     Model contains the following continuum elements:
+
+     material   elements        Volume
+     watr          90601       9.0065185E-04
+     void              0       0.0000000E+00
+
+     Bounding Box XYZ
+     material   xmin           xmax           ymin           ymax           zmin           zmax
+     watr       0.0000000E+00  2.9999999E-02  0.0000000E+00  2.9999999E-02  0.0000000E+00  0.0000000E+00
+
+     Bounding Box IJK
+     material            imin           imax           jmin           jmax           kmin           kmax
+     watr                   1            302              1            302              0              0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+     *end*     subcommand generated
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot matr
+
+     opening X11 graphics station
+     screen resolution          xmax=1366 ymax= 768
+     window resolution (pixels) xmax=1145 ymax= 690
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- term
+     *end*     subcommand generated
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- func wvlt 1000000.000000 1.000000
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- plod
+     *end*     subcommand generated
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  pdef pres1 func
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  vctr vctr1 1 0 0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  sdef pres1 vctr1 3 3 3 300
+     Additional element faces loaded=       297
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- calc
+     *end*     subcommand generated
+          297 element surfaces loaded due to all SDEF commands
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  pres
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- pout
+     *end*     subcommand generated
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  hist func
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- prcs
+     *end*     subcommand generated
+
+     there are currently:    1 time histories to be saved every            1 time steps
+                             0 snapshot commands to be activated every    1 time steps
+                    Elapsed seconds at           Begin PRCS =    1.396E+01
+  
+      Single Precision bytes per word:           4
+                              
+      Rough Estimate of RAM requirements for this job
+  
+            Base Mechanical:     0.002
+            Calc arrays:         0.001
+            Aux arrays:          0.001
+      _____________________________________
+            Total RAM (Gbyte):   0.006
+                              
+                    Elapsed seconds at      Begin Continuum =    1.405E+01
+
+     zone   1     type=stnd
+     ibeg=       1     iend=     301     jbeg=       1     jend=     301     kbeg=       1     kend=       1
+     min  distance=  0.9966642E-04 for i=     160 j=       1 k=       1  material=watr                
+     min   transit=  0.6662157E-07 for i=     160 j=       1 k=       1  material=watr                
+     max time step=  0.5329725E-07
+                    Elapsed seconds at        End Continuum =    1.406E+01
+
+     model                            time step=   0.532973E-07
+     zone    1     time ratio=     1     time step=   0.532973E-07
+
+          data groups containing operational field variables
+     --------------------------------------------------------------------------------
+     data group=xvel                     length=     91204
+     data group=yvel                     length=     91204
+     data group=xfrc                     length=     91204
+     data group=yfrc                     length=     91204
+     data group=sgxx                     length=     90601
+     data group=sgyy                     length=     90601
+     data group=sgzz                     length=     90601
+     data group=sgxy                     length=     90601
+     data group=pres                     length=     90601
+     data group=vekk                     length=     90601
+     data group=vexx                     length=     90601
+     data group=veyy                     length=     90601
+     data group=vexy                     length=     90601
+
+
+
+     data manager summary: last name =       216     maximum names=        20000
+       (numeric  ) words used =        1404573    maximum words =      100000767
+       (character) words used =           5373    maximum words =         100000
+
+     Equivalently in Mbytes:
+       (numeric  ) Mbyte used =              5    maximum Mbyte =            400
+       (character) Mbyte used =              1    maximum Mbyte =              2
+                    Elapsed seconds at             End PRCS =    1.407E+01
+          current  definition of tstep                (  real   ) =  0.5329725E-07
+          ****warning from syminp   --Assigning Real value to Integer variable=nexec               
+          current  definition of nexec                ( integer ) =       376
+          current  definition of nexec2               ( integer ) =        37
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- proc plot save
+     Adding procedure plot                 composed of:
+
+     exec $nexec2
+     grph
+      plot pres
+
+     end$ proc
+
+     Number of lines:     3
+     Total number of character words:     3
+
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- proc plot 12
+
+     Executing procedure plot                    12 times
+
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+
+     Execution complete: current timestep=       37 ; time=  0.1971998E-05
+
+     Total CP seconds for this job=   0.1875000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   14.26159    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=       74 ; time=  0.3943996E-05
+
+     Total CP seconds for this job=   0.3750000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   14.48024    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      111 ; time=  0.5915995E-05
+
+     Total CP seconds for this job=   0.5625000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   14.70157    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      148 ; time=  0.7887993E-05
+
+     Total CP seconds for this job=   0.7500000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   14.92390    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      185 ; time=  0.9859992E-05
+
+     Total CP seconds for this job=   0.9375000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   15.14834    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      222 ; time=  0.1183199E-04
+
+     Total CP seconds for this job=    1.125000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   15.37218    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      259 ; time=  0.1380399E-04
+
+     Total CP seconds for this job=    1.312500    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   15.59608    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      296 ; time=  0.1577599E-04
+
+     Total CP seconds for this job=    1.500000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   15.82135    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      333 ; time=  0.1774799E-04
+
+     Total CP seconds for this job=    1.687500    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   16.04663    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      370 ; time=  0.1971998E-04
+
+     Total CP seconds for this job=    1.875000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   16.27833    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      407 ; time=  0.2169198E-04
+
+     Total CP seconds for this job=    2.062500    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   16.50510    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec2
+     *end*     subcommand generated
+
+     Execution complete: current timestep=      444 ; time=  0.2366398E-04
+
+     Total CP seconds for this job=    2.250000    
+
+     CP seconds for executing       37 timesteps=  0.1875000    
+
+     CP seconds for structural grid =  0.1875000    
+
+          CP seconds for each timestep computed =  0.5067567E-02
+
+          CP seconds for each element computed =  0.5593280E-07
+
+          Wallclock seconds since begining or last restart =   16.72669    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot pres
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- stop
+     *end*     subcommand generated
+
+
+     restart written for time=   0.236640E-04    time step=     444
+
+        PLOD summary:  Current value       Max value           Time of Max
+        -------------  -------------       -------------       ------------
+
+Number of PLOD faces
+      Number defined            297                 297        0.000000E+00
+  Number deactivated              0                   0        0.000000E+00
+
+        Total forces
+    Negative x-force   0.000000E+00       -0.169379E-01        0.159892E-05
+    Positive x-force   0.000000E+00        0.296002E-01        0.202530E-05
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+Average pressure for
+    Negative x-force   0.000000E+00       -0.572202E+00        0.159892E-05
+    Positive x-force   0.000000E+00        0.999962E+00        0.202530E-05
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+      Total area for
+    Negative x-force   0.000000E+00        0.296013E-01        0.319784E-06
+    Positive x-force   0.000000E+00        0.296013E-01        0.532973E-07
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+     Total PLOD area
+     For all x-force   0.296013E-01        0.296013E-01        0.532973E-07
+     For all y-force   0.000000E+00        0.000000E+00        0.000000E+00
+     For all z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+     data manager summary: last name =       217     maximum names=        20000
+       (numeric  ) words used =        1452060    maximum words =      100000767
+       (character) words used =           5374    maximum words =         100000
+
+     Equivalently in Mbytes:
+       (numeric  ) Mbyte used =              5    maximum Mbyte =            400
+       (character) Mbyte used =              1    maximum Mbyte =              2
+ ...............................................................................
+ .           PZFlex  processing started   at Thu Jan 14 14:31:35 2016          .
+ .           PZFlex  processing completed at Thu Jan 14 14:31:52 2016          .
+ ...............................................................................
+ .             Machine: Flexcid                            Warnings:     1      .
+ ...............................................................................
+ .             Total cpu minutes for job:   0.5052083E-01                      .
+ ...............................................................................
